@@ -1,6 +1,6 @@
 CREATE DATABASE novels;
 
-CREATE USER 'novels'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Gr3atN0v3L$';
+CREATE USER 'novels'@'localhost' IDENTIFIED WITH mysql_native_password BY 'g00dR3@d$!';
 
 GRANT ALL ON novels.* TO 'novels'@'localhost';
 

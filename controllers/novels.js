@@ -1,19 +1,24 @@
 const models = require('../models')
 
 const getAllNovels = async (request, response) => {
-  const novels = await models.Novels.findAll({
-    include: [{ model: models.Authors }, { model: models.Genres }]
+  const novels = await models.novels.findAll({
+    include: [{ model: models.authors }, { model: models.Genres }]
   })
 
   return response.send(novels)
 }
 
-const getNovelById = async (request, response) => {
+const getNovelByIdOrTitle = async (request, response) => {
   const { id } = request.params
 
-  const novel = await models.Novels.findOne({
-    where: { id },
-    include: [{ model: models.Authors }, { model: models.Genres }]
+  const novel = await models.novels.findOne({
+    where: {
+      [models.sequelize.op.or]: [
+        { id: id },
+        { title: { [models.sequelize.op.like]: '%&{ id }%' } }
+      ]
+    },
+    include: [{ model: models.authors }, { model: models.Genres }]
   })
 
   return novel
@@ -21,4 +26,4 @@ const getNovelById = async (request, response) => {
     : response.sendStatus(404)
 }
 
-module.exports = { getAllNovels, getNovelById }
+module.exports = { getAllNovels, getNovelByIdOrTitle }
