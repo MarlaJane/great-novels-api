@@ -4,21 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/ env-cmd ./node_modules/.bin/nodemon index.js",
+    "dev": "./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon index.js",
     "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequalize db:migrate --env development --config ./config/sequelize.js",
     "lint": "./node_modules/.bin/eslint --format codeframe .",
     "lint:fix": "./node_modules/.bin/eslint --fix --format codeframe ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stackeducation/great-novels-api.git"
+    "url": "git+https://github.com/MarlaJane/great-novels-api.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stackeducation/great-novels-api/issues"
+    "url": "https://github.com/MarlaJane/great-novels-api/issues"
   },
-  "homepage": "https://github.com/stackeducation/great-novels-api#readme",
+  "homepage": "https://github.com/MarlaJane/great-novels-api#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.1.0",

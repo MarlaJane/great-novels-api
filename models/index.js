@@ -7,11 +7,11 @@ const novelsModel = require('./novels')
 const novelsGenresModel = require('./novelsGenres')
 
 const enviroment = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
-const {
-  username, password, database, host, dialect
-} = allConfigs[enviroment]
+const config = allConfigs[enviroment]
 
-const connection = new Sequelize(username, password, database, { host, dialect })
+const connection = new Sequelize(config.database, config.username, config.password, {
+  host: config.host, dialect: config.dialect
+})
 
 const authors = authorsModel(connection, Sequelize)
 const genres = genresModel(connection, Sequelize)

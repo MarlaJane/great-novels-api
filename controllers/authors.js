@@ -7,13 +7,13 @@ const getAllAuthors = async (request, response) => {
 }
 
 const getAuthorByIdOrName = async (request, response) => {
-  const { id } = request.params
+  const { identifier } = request.params
 
   const author = await models.authors.findOne({
     where: {
       [models.Sequelize.Op.or]: [
-        { id: id },
-        { nameLast: { [models.Sequelize.Op.Like]: `%${id}` } },
+        { id: identifier },
+        { nameLast: { [models.Sequelize.Op.like]: `%${identifier}` } },
       ]
     },
     include: [{
